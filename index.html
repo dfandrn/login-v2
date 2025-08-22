@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="https://placehold.co/80x80" alt="Secure login portal icon with shield and key symbols in blue and white" class="login-icon">
+                <h1>Selamat Datang</h1>
+                <p>Masuk ke akun Anda untuk melanjutkan</p>
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <img src="https://placehold.co/20x20" alt="User profile icon representing username input field" class="input-icon">
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            placeholder="Masukkan username Anda"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <img src="https://placehold.co/20x20" alt="Lock icon representing password security" class="input-icon">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Masukkan password Anda"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Ingat saya
+                    </label>
+                    <a href="#" class="forgot-password">Lupa password?</a>
+                </div>
+
+                <button type="submit" class="login-button">
+                    <span>Masuk</span>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>Belum punya akun? <a href="#">Daftar disini</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Silakan isi username dan password!');
+                return;
+            }
+            
+            // Simulasi login
+            console.log('Login attempt:', { username, password });
+            alert('Login berhasil! (Simulasi)');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
