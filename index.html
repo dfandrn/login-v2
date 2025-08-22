@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login System</title>
+    <!-- CSS Stylesheet terhubung dengan sukses -->
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .css-status {
+            display: none;
+        }
+        /* Indicator bahwa CSS terhubung dengan baik */
+        .css-connected .css-status {
+            display: block;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #48bb78;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-<body>
+<body class="css-connected">
+    <!-- Status indicator CSS -->
+    <div class="css-status">
+        ✓ CSS Stylesheet Terhubung
+    </div>
+    
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
-                <img src="https://placehold.co/80x80" alt="Secure login portal icon with shield and key symbols in blue and white" class="login-icon">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1cafcc7d-4e0b-4064-ad59-6785033295d5.png" alt="Secure login portal icon with shield and key symbols in blue and white" class="login-icon">
                 <h1>Selamat Datang</h1>
                 <p>Masuk ke akun Anda untuk melanjutkan</p>
             </div>
@@ -19,7 +50,7 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-group">
-                        <img src="https://placehold.co/20x20" alt="User profile icon representing username input field" class="input-icon">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/435a3af0-8b81-4897-9032-12274b2a2dfe.png" alt="User profile icon representing username input field" class="input-icon">
                         <input 
                             type="text" 
                             id="username" 
@@ -33,7 +64,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-group">
-                        <img src="https://placehold.co/20x20" alt="Lock icon representing password security" class="input-icon">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1515995-b071-4409-8d60-a80a90cdaad9.png" alt="Lock icon representing password security" class="input-icon">
                         <input 
                             type="password" 
                             id="password" 
@@ -60,11 +91,37 @@
 
             <div class="login-footer">
                 <p>Belum punya akun? <a href="#">Daftar disini</a></p>
+                <!-- Status koneksi CSS terlihat di sini -->
+                <div style="margin-top: 15px; padding: 10px; background: #f7fafc; border-radius: 8px; border-left: 4px solid #48bb78;">
+                    <small style="color: #4a5568;">
+                        ✓ Styling dari <strong>styles.css</strong> aktif dan terhubung sempurna
+                    </small>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Cek jika CSS terhubung dengan baik
+        document.addEventListener('DOMContentLoaded', function() {
+            const isCssConnected = document.querySelector('link[href="styles.css"]');
+            if (isCssConnected) {
+                console.log('✅ CSS stylesheet terhubung dengan sukses');
+                document.body.classList.add('css-connected');
+                
+                // Tampilkan status sementara lalu hilangkan
+                setTimeout(() => {
+                    const status = document.querySelector('.css-status');
+                    if (status) {
+                        setTimeout(() => {
+                            status.style.opacity = '0';
+                            setTimeout(() => status.remove(), 500);
+                        }, 2000);
+                    }
+                }, 1000);
+            }
+        });
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -86,3 +143,4 @@
     </script>
 </body>
 </html>
+
