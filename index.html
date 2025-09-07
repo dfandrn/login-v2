@@ -1,146 +1,731 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login System</title>
-    <!-- CSS Stylesheet terhubung dengan sukses -->
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .css-status {
-            display: none;
-        }
-        /* Indicator bahwa CSS terhubung dengan baik */
-        .css-connected .css-status {
-            display: block;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: #48bb78;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            z-index: 1000;
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aplikasi DANA Davigo - Layanan Lengkap</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CSS Custom kamu -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="css-connected">
-    <!-- Status indicator CSS -->
-    <div class="css-status">
-        ✓ CSS Stylesheet Terhubung
-    </div>
+<body class="bg-gray-50 relative">
     
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1cafcc7d-4e0b-4064-ad59-6785033295d5.png" alt="Secure login portal icon with shield and key symbols in blue and white" class="login-icon">
-                <h1>Selamat Datang</h1>
-                <p>Masuk ke akun Anda untuk melanjutkan</p>
-            </div>
-            
-            <form class="login-form" id="loginForm">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/435a3af0-8b81-4897-9032-12274b2a2dfe.png" alt="User profile icon representing username input field" class="input-icon">
-                        <input 
-                            type="text" 
-                            id="username" 
-                            name="username" 
-                            placeholder="Masukkan username Anda"
-                            required
-                        >
-                    </div>
-                </div>
+<!-- ======= HEADER SALDO ======= -->
+<header id="header-saldo" class="bg-gradient-to-r from-blue-700 to-blue-600 pb-12 pt-6 relative">
+  <!-- SALDO CARD -->
+  <div id="saldoCard" class="bg-white rounded-xl p-3 shadow-lg mx-4 -mb-6">
+    <!-- TOP ROW -->
+    <div class="flex justify-between items-start mb-2">
+      <div class="flex items-center space-x-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="icon" class="w-5 h-5">
+        <span class="font-semibold text-base">davigo</span>
+      </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-group">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1515995-b071-4409-8d60-a80a90cdaad9.png" alt="Lock icon representing password security" class="input-icon">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="Masukkan password Anda"
-                            required
-                        >
-                    </div>
-                </div>
+      <!-- Tombol kanan -->
+      <div class="flex space-x-2">
+        <button id="topUpBtn" class="relative flex flex-col items-center">
+          <span class="absolute -top-2 bg-green-600 text-white text-[10px] px-1 rounded-full">Gratis</span>
+          <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <span class="text-xs mt-1">Top Up</span>
+        </button>
 
-                <div class="form-options">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="rememberMe">
-                        <span class="checkmark"></span>
-                        Ingat saya
-                    </label>
-                    <a href="#" class="forgot-password">Lupa password?</a>
-                </div>
-
-                <button type="submit" class="login-button">
-                    <span>Masuk</span>
-                </button>
-            </form>
-
-            <div class="login-footer">
-                <p>Belum punya akun? <a href="#">Daftar disini</a></p>
-                <!-- Status koneksi CSS terlihat di sini -->
-                <div style="margin-top: 15px; padding: 10px; background: #f7fafc; border-radius: 8px; border-left: 4px solid #48bb78;">
-                    <small style="color: #4a5568;">
-                        ✓ Styling dari <strong>styles.css</strong> aktif dan terhubung sempurna
-                    </small>
-                </div>
-            </div>
-        </div>
+        <button id="withdrawBtn" class="relative flex flex-col items-center">
+          <span class="absolute -top-2 bg-green-600 text-white text-[10px] px-1 rounded-full">Gratis</span>
+          <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <span class="text-xs mt-1">Tarik</span>
+        </button>
+      </div>
     </div>
 
-    <script>
-        // Cek jika CSS terhubung dengan baik
-        document.addEventListener('DOMContentLoaded', function() {
-            const isCssConnected = document.querySelector('link[href="styles.css"]');
-            if (isCssConnected) {
-                console.log('✅ CSS stylesheet terhubung dengan sukses');
-                document.body.classList.add('css-connected');
-                
-                // Tampilkan status sementara lalu hilangkan
-                setTimeout(() => {
-                    const status = document.querySelector('.css-status');
-                    if (status) {
-                        setTimeout(() => {
-                            status.style.opacity = '0';
-                            setTimeout(() => status.remove(), 500);
-                        }, 2000);
-                    }
-                }, 1000);
-            }
-        });
+    <!-- SALDO -->
+    <div class="flex items-center space-x-2 mb-1">
+      <p class="font-bold text-2xl text-gray-800">Rp<span id="balance">658.500</span></p>
+      <button id="toggleSaldoBtn" class="p-1 rounded-full bg-gray-100 border border-gray-300">
+        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 
+               4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      </button>
+    </div>
+    <p class="text-xs text-gray-500 mb-3">Coins David 3</p>
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (!username || !password) {
-                alert('Silakan isi username dan password!');
-                return;
-            }
-            
-            // Simulasi login
-            console.log('Login attempt:', { username, password });
-            alert('Login berhasil! (Simulasi)');
-            
-            // Reset form
-            this.reset();
-        });
-    </script>
+    <!-- MENU BAWAH -->
+    <div class="flex space-x-2">
+      <button class="flex-1 bg-blue-50 py-2 px-2 rounded-full text-xs flex items-center justify-center space-x-1">
+        <span>Asuransi mulai 1rb</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <button class="flex-1 bg-blue-50 py-2 px-2 rounded-full text-xs flex items-center justify-center space-x-1">
+        <span>Aktifin Pinjam</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- ======= MAIN (ASLI) ======= -->
+  <main id="mainScroll" class="pb-24 overflow-y-auto with-bottom-space" style="height: calc(100% - 230px)">
+
+
+<!-- Overlay (layout ke-2 full layar biru) -->
+<div id="overlay" class="overlay">
+  <button id="close" class="close-btn">✕</button>
+
+  <!-- Section 1 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Pembayaran</h2>
+      <button class="lihat-semua">Lihat semua →</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/money-transfer.png"/></div>
+        Pulsa
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/electricity.png"/></div>
+        PLN
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/sim-card-chip.png"/></div>
+        Paket Data
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/money.png"/></div>
+        E-Money
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/google-play.png"/></div>
+        Google Play
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/controller.png"/></div>
+        Top Up Game
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/bill.png"/></div>
+        Bayar Tagihan
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/restaurant.png"/></div>
+        GoFood
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Promo & Hiburan</h2>
+      <button class="lihat-semua">Lihat semua →</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/cat.png"/></div>
+        GoPay Pet
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/ticket.png"/></div>
+        Voucher
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/invoice.png"/></div>
+        Tagihan
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/gift.png"/></div>
+        Rewards
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/lazada.png"/></div>
+        Lazada
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/play-button-circled.png"/></div>
+        Nonton
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/medal.png"/></div>
+        Populer
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon"><img src="https://img.icons8.com/color/48/shopping-cart.png"/></div>
+        Belanja
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+<!-- Section: Beranda -->
+<section id="homeSection" class="p-5">
+  <div class="grid grid-cols-4 gap-3 mb-5">
+    
+    <!-- Pulsa/Data -->
+<button id="pulsaDataBtn" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <img src="https://cdn-icons-png.flaticon.com/512/1041/1041883.png" 
+       alt="Pulsa Data" class="w-8 h-8 object-contain mb-2">
+  <span class="text-[11px] font-medium text-gray-700">Pulsa/Data</span>
+</button>
+
+<!-- Listrik -->
+<button id="listrikBtn" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <img src="https://img.icons8.com/color/48/electricity.png" 
+       alt="Token Listrik" class="w-8 h-8 object-contain mb-2">
+  <span class="text-[11px] font-medium text-gray-700">Listrik</span>
+</button>
+
+<!-- top up game -->
+<button id="topUpGameBtn"
+ class="feature-card flex flex-col items-center bg-white p-3 rounded-lg shadow-sm transition duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+    <img src="https://raw.githubusercontent.com/dfandrn/Gambar/refs/heads/main/file_00000000232c622fa29bb39098993afc.png"  
+         alt="Top Up Game" class="w-8 h-8 object-contain">
+  <span class="text-[11px] font-medium text-gray-700">Top Up Game</span>
+</button>
+
+<!-- Davigo Point button -->
+<button id="davigoPointBtn" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <img src="https://raw.githubusercontent.com/dfandrn/Gambar/main/Picsart_25-09-07_11-41-37-689.png" 
+       alt="Davigo Point" class="w-8 h-8 object-contain mb-2">
+  <span class="text-[11px] font-medium text-gray-700">Davigo Point</span>
+</button>
+
+<!-- All Menu -->
+<button id="trigger" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  </svg>
+  <span class="text-[11px] font-medium text-gray-700">All Menu</span>
+</button>
+
+    <!-- Promo Google Play -->
+<button id="gplayPromoBtn" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <img src="https://raw.githubusercontent.com/dfandrn/Gambar/main/Picsart_25-09-06_19-38-40-018.jpg" 
+       alt="Google Play" class="w-16 h-16 object-contain mb-2">
+  <span class="text-[11px] font-medium text-gray-700">Promo Google Play</span>
+</button>
+
+<!-- GoFood -->
+<button id="gofoodBtn" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <img src="https://raw.githubusercontent.com/dfandrn/Gambar/main/Picsart_25-09-07_11-41-06-967.png" 
+       alt="GoFood" class="w-16 h-16 object-contain mb-2">
+  <span class="text-[11px] font-medium text-gray-700">GoFood</span>
+</button>
+
+<!-- E-Money -->
+<button id="emoneyBtn" 
+  class="feature-card flex flex-col items-center bg-white p-3 rounded-xl shadow-sm 
+         transition-all duration-300 hover:shadow-lg hover:-translate-y-1 active:scale-95">
+  <img src="https://img.icons8.com/color/48/sim-card-chip.png" 
+       alt="E-Money" class="w-8 h-8 object-contain mb-2">
+  <span class="text-[11px] font-medium text-gray-700">E-Money</span>
+</button>
+  </div>
+
+  <!-- Container gabungan -->
+<div class="notif-group">
+  
+  <!-- Notifikasi kecil -->
+  <div class="notif-small">
+    <div class="left">📣 Beberapa orang 👉 🎁 <strong>DANA Deals</strong> oleh 👩‍👩‍👦</div>
+    <div class="right">🔥</div>
+  </div>
+
+  <!-- Notifikasi besar -->
+  <div class="notif-card">
+    <div class="notif-left">
+      <div class="notif-icon">
+        <img src="https://placehold.co/36x36/00AEEF/FFFFFF?text=%F0%9F%91%A5" alt="Teman">
+      </div>
+      <div class="notif-text">
+        <strong>Temanmu</strong> 👉 🎁 dari 👥
+      </div>
+    </div>
+    <div class="notif-time">7d</div>
+  </div>
+
+  <div class="notif-card">
+    <div class="notif-left">
+      <div class="notif-icon">
+        <img src="https://placehold.co/36x36/0044CC/FFFFFF?text=%F0%9F%9A%9A" alt="DANA">
+      </div>
+      <div class="notif-text">
+        <strong>DANA</strong> Bayar STNK praktis via e-Samsat di DANA
+      </div>
+    </div>
+    <div class="notif-time">9m</div>
+  </div>
+
+</div>
+
+
+
+
+
+  <!-- Promo Slider -->
+  <div class="promo-slider mb-4">
+    <div class="slider-container" id="promoSlider">
+      <div class="slide">
+        <img src="https://placehold.co/600x200/00AAEF/FFFFFF?text=Cashback+pulsa+15%" alt="Diskon 20%">
+      </div>
+      <div class="slide">
+        <img src="https://placehold.co/600x200/00AAEF/FFFFFF?text=Cashback+Listrik+50%" alt="Cashback PLN">
+      </div>
+      <div class="slide">
+        <img src="https://placehold.co/600x200/00AAEF/FFFFFF?text=Google+Play+Voucher" alt="Google Play">
+      </div>
+      <div class="slide">
+        <img src="https://placehold.co/600x200/00AAEF/FFFFFF?text=Top+Up+Game+Bonus" alt="Game Bonus">
+      </div>
+      <div class="slide">
+        <img src="https://placehold.co/600x200/00AAEF/FFFFFF?text=Paket+Data+Ekstra" alt="Paket Data">
+      </div>
+    </div>
+  </div>
+
+<!-- ====== Section Program Pemerintah ====== -->
+<div class="bg-white rounded-xl p-4 mt-4 mx-3 shadow">
+  <div class="flex justify-between items-center mb-3">
+    <h2 class="text-sm font-semibold text-gray-900">Program pemerintah</h2>
+    <button class="text-green-600 text-sm font-medium hover:underline">Lihat semua →</button>
+  </div>
+
+  <!-- Grid 3 Icon -->
+  <div class="grid grid-cols-3 gap-3 text-center text-xs text-gray-800">
+    <div class="flex flex-col items-center">
+      <div class="bg-green-100 w-12 h-12 flex items-center justify-center rounded-lg mb-1">
+        💵
+      </div>
+      <span>Pembayaran</span>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <div class="bg-yellow-100 w-12 h-12 flex items-center justify-center rounded-lg mb-1">
+        🎰
+      </div>
+      <span>Judi Pasti Rugi</span>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <div class="bg-blue-100 w-12 h-12 flex items-center justify-center rounded-lg mb-1">
+        📘
+      </div>
+      <span>Edukasi</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== Section Promo Kecil Full White ====== -->
+<div class="bg-white text-gray-900 rounded-lg shadow w-full max-w-sm mx-auto overflow-hidden">
+  <!-- Bagian Atas: Judul + Tombol -->
+  <div class="p-3 flex items-center justify-between">
+    <h2 class="text-sm font-semibold truncate pr-2">
+      Klaim 150rb kamu sekarang!
+    </h2>
+    <a 
+      id="promoBtn"
+      href="#"
+      class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 whitespace-nowrap">
+      Mulai <span>→</span>
+    </a>
+  </div>
+
+  <!-- Deskripsi -->
+  <div class="px-3 pb-2 text-center">
+    <p class="text-xs text-gray-600 leading-snug">
+      Ada hadiah GoPay Saldo s.d. <span class="font-bold text-gray-900">150.000</span> buat kamu.  
+      Buruan dapetin sebelum kehabisan!
+    </p>
+    <p class="mt-1 text-xs font-semibold text-green-600">
+      Ayo dapetin sekarang!
+    </p>
+  </div>
+
+  <!-- Foto Promo Full Width -->
+  <img 
+    src="https://github.com/dfandrn/aplikasitab/blob/main/file_000000005c1861f5b144d2b6ce52d86e.png?raw=true" 
+    alt="Promo 150rb" 
+    class="w-full object-cover"
+  />
+</div>
+
+
+<!-- Toggle tema -->
+<div class="theme-toggle-container mt-4">
+  <p class="theme-title">Kamu tim mana?</p>
+  <p class="theme-sub">Sisi gelap atau terang, ayo pilih di sini! 🌟</p>
+  <button class="theme-toggle-btn light" id="toggleThemeBtn">☀️ Light Mode</button>
+</div>
+</section>
+
+<!-- Section lain jangan nyambung -->
+<section id="activitySection" class="p-5 hidden">
+  <h2 class="text-lg font-semibold mb-3">Aktivitas</h2>
+  <div id="txnList" class="bg-white rounded-xl p-3">
+    <div class="empty-state" id="emptyTxn">Belum ada transaksi.</div>
+  </div>
+</section>
+
+<section id="paySection" class="p-5 hidden">
+  <div class="bg-white rounded-xl p-4 text-center">
+    <p class="text-sm text-gray-600 mb-3">Scan QR untuk bayar</p>
+    <iframe src="https://dfandrn.github.io/Gambar/" 
+            class="w-full h-[70vh] border-0 rounded-xl shadow-lg"></iframe>
+  </div>
+</section>
+
+<section id="walletSection" class="p-5 hidden">
+  <div class="bg-white rounded-xl p-4">
+    <h3 class="font-semibold mb-2">Dompet Saya</h3>
+    <ul class="text-sm text-gray-600 space-y-2">
+      <li>Bank tertaut: -</li>
+      <li>Kartu: -</li>
+      <li>Limit harian: Rp 5.000.000</li>
+    </ul>
+  </div>
+</section>
+    
+
+  <!-- ======= Bottom Navigation (tambahan) ======= -->
+  <nav class="bottom-nav">
+    <div class="row">
+      <button id="tabHome" class="active">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9.75L12 3l9 6.75V21a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1V9.75z"/>
+        </svg><span>Beranda</span>
+      </button>
+      <button id="tabAktivitas">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6a2 2 0 00-2-2H5m6 8V9a2 2 0 012-2h2m-6 10h6"/>
+        </svg><span>Aktivitas</span>
+      </button>
+      <button id="tabPay">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/>
+        </svg><span>Pay/QRIS</span>
+      </button>
+      <button id="tabWallet">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-2m0 0h4V9h-4v6z"/>
+        </svg><span>Dompet</span>
+      </button>
+      <button id="tabLogout">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m0-10V5a2 2 0 114 0v1"/>
+        </svg><span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= MODAL VERIFIKASI AWAL (LOGIN) ======= -->
+  <div id="startupVerify">
+    <div class="box">
+      <div class="title">Verifikasi Akun</div>
+      <div class="subtitle">Masuk untuk melanjutkan ke beranda</div>
+
+      <!-- Step 1: Nomor HP -->
+      <div id="verifyStepPhone">
+        <label class="text-sm text-gray-600">Nomor HP</label>
+        <input type="tel" id="startupPhone" placeholder="08xxxxxxxxxx" inputmode="numeric" />
+        <button class="btn-primary mt-3" onclick="startupSendOTP()">Kirim OTP</button>
+        <button id="havePinBtn" class="btn-success mt-2">Sudah punya PIN</button>
+      </div>
+
+      <!-- Step 2: OTP -->
+      <div id="verifyStepOTP" class="hidden">
+        <label class="text-sm text-gray-600">Kode OTP</label>
+        <input type="text" id="startupOTP" placeholder="6 digit OTP" inputmode="numeric" maxlength="6" />
+        <button class="btn-success mt-3" onclick="startupVerifyOTP()">Verifikasi OTP</button>
+        <button class="btn-primary mt-2" onclick="startupResendOTP()">Kirim Ulang OTP</button>
+      </div>
+
+      <!-- Step 3: Set PIN baru -->
+      <div id="verifyStepSetPIN" class="hidden">
+        <label class="text-sm text-gray-600">Buat PIN Baru</label>
+        <input type="password" id="startupSetPIN1" placeholder="6 digit" maxlength="6" inputmode="numeric" />
+        <input type="password" id="startupSetPIN2" class="mt-2" placeholder="Ulangi PIN" maxlength="6" inputmode="numeric" />
+        <button class="btn-primary mt-3" onclick="startupSavePIN()">Simpan PIN</button>
+      </div>
+
+      <!-- Step 4: Masukkan PIN -->
+      <div id="verifyStepPIN" class="hidden">
+        <label class="text-sm text-gray-600">PIN</label>
+        <input type="password" id="startupPIN" placeholder="******" maxlength="6" inputmode="numeric" />
+        <button class="btn-primary mt-3" onclick="startupVerifyPIN()">Masuk</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= SHEET PULSA/DATA ======= -->
+<div id="pulsaSheet" class="sheet">
+  <div class="handle"></div>
+  <div class="title flex justify-between items-center">
+    <span>Pulsa & Paket Data</span>
+    <!-- Tombol Close -->
+    <button class="closeSheetBtn text-gray-400 hover:text-gray-600 text-xl leading-none px-2">&times;</button>
+  </div>
+
+  <div class="body">
+    <div class="bg-white rounded-xl p-3 mb-3 border">
+      <label class="text-xs text-gray-500">Nomor HP</label>
+      <input id="pulsaPhone" type="tel" placeholder="08xxxxxxxxxx" class="w-full border rounded-lg px-3 py-2 mt-1" inputmode="numeric">
+    </div>
+
+    <div class="mb-2">
+      <div class="flex justify-between items-center">
+        <h4 class="font-semibold">Pilih Nominal</h4>
+        <button id="pulsaReset" class="text-xs underline">Reset</button>
+      </div>
+      <div id="pulsaGrid" class="grid grid-cols-3 gap-2 mt-2">
+        <!-- injected -->
+      </div>
+    </div>
+
+    <div id="pulsaSummary" class="bg-sky-50 border border-sky-100 rounded-xl p-3 mt-3 hidden">
+      <div class="flex justify-between text-sm">
+        <span>Harga</span><span id="pulsaHarga">Rp0</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span>Diskon</span><span id="pulsaDiskon">- Rp0</span>
+      </div>
+      <div class="flex justify-between text-sm font-semibold mt-1">
+        <span>Total Bayar</span><span id="pulsaTotal">Rp0</span>
+      </div>
+      <button id="pulsaBayar" class="w-full mt-3 bg-[#00aaef] text-white rounded-lg py-2 font-medium">Bayar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======= SHEET LISTRIK ======= -->
+<div id="listrikSheet" class="sheet">
+  <div class="handle"></div>
+  <div class="title flex justify-between items-center">
+  <span>Listrik Prabayar</span>
+<button class="closeSheetBtn ...">&times;</button>
+  </div>
+  <div class="body">
+    <div class="bg-white rounded-xl p-3 mb-3 border">
+      <label class="text-xs text-gray-500">No. Meter / ID Pelanggan</label>
+      <input id="plnId" type="text" placeholder="11/12 digit" class="w-full border rounded-lg px-3 py-2 mt-1" inputmode="numeric">
+      <div id="plnInfo" class="text-xs text-gray-500 mt-2 hidden">
+        Nama: <span id="plnNama">-</span> • Daya: <span id="plnDaya">-</span>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <div class="flex justify-between items-center">
+        <h4 class="font-semibold">Pilih Nominal Token</h4>
+        <button id="plnReset" class="text-xs underline">Reset</button>
+      </div>
+      <div id="plnGrid" class="grid grid-cols-3 gap-2 mt-2">
+        <!-- injected -->
+      </div>
+    </div>
+
+    <div id="plnSummary" class="bg-amber-50 border border-amber-100 rounded-xl p-3 mt-3 hidden">
+      <div class="flex justify-between text-sm">
+        <span>Harga</span><span id="plnHarga">Rp0</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span>Biaya Admin</span><span id="plnAdmin">Rp0</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span>Diskon</span><span id="plnDiskon">- Rp0</span>        
+      </div>
+      <div class="flex justify-between text-sm font-semibold mt-1">
+        <span>Total Bayar</span><span id="plnTotal">Rp0</span>
+      </div>
+      <button id="plnBayar" class="w-full mt-3 bg-[#00aaef] text-white rounded-lg py-2 font-medium">Bayar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======= SHEET GAME ======= -->
+<div id="topUpGameSheet" class="sheet">
+  <div class="handle"></div>
+  <div class="flex justify-between items-center px-3">
+    <div class="title">Top Up Game</div>
+    <button class="closeSheetBtn text-gray-500 hover:text-red-500 text-xl font-bold">&times;</button>
+  </div>
+  
+  <div class="body">
+    <!-- Logo game yang dipilih -->
+    <div id="selectedGame" class="flex justify-center mb-3 hidden">
+      <img id="gameLogo" src="" alt="Game Logo" class="w-16 h-16">
+    </div>
+
+    <!-- Pilih game -->
+<h4 class="font-semibold mb-2">🔥Game populer🔥</h4>
+<div id="gameList" class="grid grid-cols-2 gap-3 mb-3">
+
+  <!-- Free Fire -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/F/free-fire-logo-3F88B0F9CC-seeklogo.com.png" alt="Free Fire">
+    <h4>Free Fire</h4>
+    <p>Garena</p>
+  </div>
+
+  <!-- Mobile Legends -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/M/mobile-legends-logo-90C5132253-seeklogo.com.png" alt="Mobile Legends">
+    <h4>Mobile Legends</h4>
+    <p>Moonton</p>
+  </div>
+
+  <!-- PUBG -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/P/pubg-mobile-logo-37B58B55E5-seeklogo.com.png" alt="PUBG">
+    <div class="game-info">
+      <h4>PUBG</h4>
+      <p>Tencent</p>
+    </div>
+  </div>
+
+  <!-- Call of Duty -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/C/call-of-duty-mobile-logo-9CCF7C5D96-seeklogo.com.png" alt="COD Mobile">
+    <div class="game-info">
+      <h4>Call of Duty</h4>
+      <p>Activision</p>
+    </div>
+  </div>
+
+  <!-- Clash of Clans -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/C/clash-of-clans-logo-7D2A5A7F8F-seeklogo.com.png" alt="Clash of Clans">
+    <div class="game-info">
+      <h4>Clash of Clans</h4>
+      <p>Supercell</p>
+    </div>
+  </div>
+
+  <!-- Roblox -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/R/roblox-logo-70FE6A6B8D-seeklogo.com.png" alt="Roblox">
+    <div class="game-info">
+      <h4>Roblox</h4>
+      <p>Roblox Corp</p>
+    </div>
+  </div>
+
+  <!-- Among Us -->
+  <div class="game-card">
+    <img src="https://seeklogo.com/images/A/among-us-logo-8E4E11F11E-seeklogo.com.png" alt="Among Us">
+    <div class="game-info">
+      <h4>Among Us</h4>
+      <p>Innersloth</p>
+    </div>
+  </div>
+
+</div>
+
+    <!-- Input ID player -->
+    <div class="bg-white rounded-xl p-3 mb-3 border">
+      <label class="text-xs text-gray-500">Player ID</label>
+      <input id="gameUserId" type="text" placeholder="Masukkan ID Player" class="w-full border rounded-lg px-3 py-2 mt-1">
+    </div>
+
+    <!-- Pilih nominal -->
+    <div class="mb-2">
+      <div class="flex justify-between items-center">
+        <h4 class="font-semibold">Pilih Nominal</h4>
+        <button id="gameReset" class="text-xs underline">Reset</button>
+      </div>
+      <div id="gameGrid" class="grid grid-cols-2 gap-2 mt-2"></div>
+    </div>
+
+    <!-- Ringkasan pembayaran -->
+    <div id="gameSummary" class="bg-purple-50 border border-purple-100 rounded-xl p-3 mt-3 hidden">
+      <div class="flex justify-between text-sm">
+        <span>Harga</span><span id="gameHarga">Rp0</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span>Diskon</span><span id="gameDiskon">- Rp0</span>
+      </div>
+      <div class="flex justify-between text-sm font-semibold mt-1">
+        <span>Total Bayar</span><span id="gameTotal">Rp0</span>
+      </div>
+      <button id="gameBayar" class="w-full mt-3 bg-[#00aaef] text-white rounded-lg py-2 font-medium">Bayar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======= SHEET DAVIGO POINT ======= -->
+<div id="davigoPointSheet" class="sheet">
+  <div class="handle"></div>
+  <div class="flex justify-between items-center px-3">
+    <div class="title">Davigo Point</div>
+    <button class="closeSheetBtn text-gray-500 hover:text-red-500 text-xl font-bold">&times;</button>
+  </div>
+
+  <div class="body">
+    <canvas id="carGame" width="300" height="400" 
+      class="mx-auto border rounded-lg bg-gray-100"></canvas>
+
+    <!-- Kontrol layar -->
+    <div class="flex justify-center gap-6 mt-3">
+      <button id="leftBtn" 
+        class="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-full text-xl shadow">
+        ◀️
+      </button>
+      <button id="rightBtn" 
+        class="bg-gray-200 hover:bg-gray-300 px-5 py-3 rounded-full text-xl shadow">
+        ▶️
+      </button>
+    </div>
+
+    <div class="mt-3 text-center">
+      <p class="text-sm">Score: <span id="score">0</span></p>
+      <p class="text-sm">Coin Kamu: <span id="coins">0</span></p>
+      <button id="redeemBtn" 
+        class="mt-2 bg-[#00aaef] text-white px-4 py-2 rounded-lg text-sm">
+        Tukar Coin ke Saldo
+      </button>
+      
+       <button id="carRestartBtn" class="mt-2 bg-green-500 text-white px-3 py-1 rounded">Mulai Ulang</button> -->
+    </div>
+  </div>
+</div>
+  <!-- JS dipanggil di akhir BODY -->
+  <script src="script.js"></script>
 </body>
-</html>
 
